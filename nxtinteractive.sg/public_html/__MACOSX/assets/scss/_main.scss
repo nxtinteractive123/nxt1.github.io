@@ -1,0 +1,278 @@
+.banner {
+  padding: 110px 0 140px;
+  @include tablet {
+    text-align: center;
+  }
+  @include mobile {
+    padding: 100px 0 120px;
+  }
+  .title {
+    position: relative;
+    z-index: 1;
+    .shape {
+      position: absolute;
+      top: -20px;
+      left: -40px;
+      transform: scale(0);
+      opacity: 0;
+      transform-origin: bottom right;
+      animation: svg_shape 0.8s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+    }
+  }
+}
+@keyframes svg_shape {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes svg_line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+// post-of-the-month
+.post-of-the-month {
+  position: relative;
+  z-index: 1;
+  padding: 120px 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  &::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: $black;
+    opacity: 0.5;
+    z-index: -1;
+  }
+}
+
+// post card style
+.post-title {
+  a {
+    background-size: 0% 2px;
+    transition: background-size 0.5s;
+    &:hover {
+      background-size: 100% 2px;
+    }
+  }
+}
+
+// post-image
+article {
+  .post-image {
+    overflow: hidden;
+    img {
+      transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+  }
+  &:hover .post-image img {
+    transform: scaleX(1.075) scaleY(1.1);
+    filter: brightness(1.1);
+  }
+}
+
+.zIndexed,
+.post-meta,
+.post-author {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+
+// post-meta
+.post-meta {
+  @include mobile {
+    font-size: 95%;
+  }
+  > li {
+    line-height: 1;
+    vertical-align: middle;
+    i {
+      font-size: 18px;
+      display: inline-block;
+      transform: translateY(1px);
+    }
+  }
+  a {
+    color: $gray;
+  }
+  .list-inline-item:not(:last-child) {
+    margin-right: 0.75rem;
+  }
+}
+
+// taxonomy style
+.taxonomy-lists {
+  .list-inline-item:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+  a {
+    color: rgba($gray, 0.8);
+    border: 1px solid rgba($gray, 0);
+    padding: 4px 12px;
+    transition: 0.3s;
+    @include mobile {
+      font-size: 15px;
+    }
+    .icon i {
+      display: inline-block;
+      transition: 0.3s;
+    }
+    &:hover {
+      color: $dark;
+      border: 1px solid rgba($dark, 0.2);
+      .icon i {
+        transform: scale(1.2) translateX(2px);
+        opacity: 1 !important;
+      }
+    }
+  }
+  .col-6 {
+    @include mobile-xs {
+      flex: 0 0 100%;
+    }
+    @include mobile {
+      a {
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+// filterTaxonomy
+#filterTaxonomy {
+  .nav-link.active {
+    font-weight: 500 !important;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+}
+
+// taxonomy item
+.taxonomy-item {
+  background-color: $white;
+  padding: 12px;
+  padding-bottom: 10px;
+}
+
+// newsletter-block style
+.newsletter-block {
+  padding: 100px 0;
+  @include tablet {
+    padding: 70px 0;
+  }
+  .input-group-text,
+  .form-control {
+    background-color: $white;
+    margin-bottom: 20px;
+  }
+  .input-group-text {
+    padding: 0 1.5rem;
+    height: 50px;
+  }
+  .form-control {
+    &:focus {
+      ~ .input-group-append {
+        .input-group-text {
+          border-color: $dark;
+          background-color: $dark;
+          color: $white;
+        }
+      }
+    }
+  }
+  ::-webkit-input-placeholder {
+    color: rgba($dark, 0.7);
+  }
+  :-ms-input-placeholder {
+    color: rgba($dark, 0.7);
+  }
+  ::placeholder {
+    color: rgba($dark, 0.7);
+  }
+  button.input-group-text {
+    color: $dark;
+    background-color: #f5f5f5;
+    i {
+      font-size: 20px;
+    }
+    &:hover {
+      border-color: $dark;
+      background-color: $dark;
+      color: $white;
+    }
+  }
+}
+
+// archive post block style
+.archive-block {
+  h2 {
+    margin-top: 40px;
+    line-height: 1;
+  }
+  h2:first-child {
+    margin-top: 0;
+  }
+  .archive-post-item {
+    font-size: 18px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:not(:last-child) a {
+      border-bottom: 0 !important;
+    }
+    span {
+      font-weight: 500;
+      display: inline-block;
+      width: 95px;
+    }
+  }
+  a:hover {
+    background-color: $white;
+  }
+}
+
+// disqus-comment style
+.disqus-comment {
+  .block {
+    padding: 30px;
+    background-color: $white;
+  }
+}
+
+// footer style
+footer {
+  padding: 30px 0;
+  @include desktop {
+    padding: 50px 0;
+  }
+}
+.footer-menu {
+  @include tablet {
+    font-size: 16px !important;
+  }
+  li {
+    position: relative;
+    &::after {
+      content: "/";
+      margin-right: 12px;
+      margin-left: 15px;
+    }
+    &:last-child::after {
+      display: none;
+    }
+  }
+}
+.copyright-text {
+  color: rgba($dark, 0.7);
+  a {
+    color: rgba($dark, 0.7);
+  }
+}
